@@ -1,6 +1,7 @@
 package se.lexicon.data;
 
 import se.lexicon.model.Person;
+import se.lexicon.model.Todo;
 
 public class People {
     private static Person[] persons;
@@ -54,5 +55,29 @@ public class People {
 
     public void clear() {
         persons = new Person[0];
+    }
+
+    public  Person[] remove(int id)
+    {
+        int index =-1;
+        for (int i = 0; i < persons.length; i++) {
+            if (persons[i].getPersonId() == id) {
+                index = i;
+            }
+        }
+
+        if (index < 0 || index >= persons.length) {
+            return persons;
+        }
+
+        Person[] result = new Person[persons.length - 1];
+        // Copy the elements except the index from original array to the other array
+        for (int i = 0, k = 0; i < persons.length; i++) {
+            if (i == index) {
+                continue;
+            }
+            result[k++] = persons[i];
+        }
+        return result;
     }
 }

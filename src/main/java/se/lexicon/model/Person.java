@@ -1,5 +1,7 @@
 package se.lexicon.model;
 
+import java.util.Objects;
+
 public class Person {
     private int personId;
     private String firstName;
@@ -36,9 +38,13 @@ public class Person {
         this.lastName = lastName;
     }
 
-    public static void main(String[] args) {
 
-
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return personId == person.personId;
     }
+
 }
